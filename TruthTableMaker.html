@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="Truth table maker" content="This site analyses propositional logic symbols and makes the truth table." />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="styleSheet.css?version=1.07" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Castoro:ital@1&family=Merriweather:wght@700&family=Nanum+Gothic:wght@700&family=Roboto&display=swap" rel="stylesheet" />
+
+    <title>Truth Table Maker</title>
+  </head>
+  <body>
+    <div class="manual-content-box hidden">
+      <div class="manual-language-select-box"><span class="english-button selected">ENG</span> | <span class="korean-button">KOR</span></div>
+      <div class="manual-content-kor hidden">
+        <h2>사용설명</h2>
+        <br />
+        <h3>1. 입력</h3>
+        <ol>
+          <li><p>변수 이름에는 '⊤', '⊥' 그리고 연산자를 제외한 어떤 글자도 사용할 수 있습니다.</p></li>
+          <li><p>변수의 수에는 제한이 없습니다.</p><p>다만 변수 하나 당 2의 제곱으로 진리치의 경우의 수가 늘어나므로 컴퓨팅 성능의 한계를 고려해야합니다.</p></li>
+          <li><p>모든 입력버튼은 마지막 커서의 위치를 기준으로 작동합니다.</p></li>
+          <li><p>모든 입력버튼은 숫자, 특정 특수문자와 대응됩니다.</p><p>대응되는 숫자, 특수문자를 입력하면 논리기호가 입력됩니다.</p></li>
+        </ol>
+
+        <div class="shortcut-table-box">
+          <table class="shortcut-table">
+            <tr>
+              <th>입력 숫자</th>
+              <th>입력 특수문자</th>
+              <th>입력 결과</th>
+            </tr>
+            <tr>
+              <td>1</td>
+              <td></td>
+              <td>⊤</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td></td>
+              <td>⊥</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>!</td>
+              <td>~</td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td>&</td>
+              <td>∧</td>
+            </tr>
+            <tr>
+              <td>5</td>
+              <td>|</td>
+              <td>∨</td>
+            </tr>
+            <tr>
+              <td>6</td>
+              <td>^</td>
+              <td>⊻</td>
+            </tr>
+            <tr>
+              <td>7</td>
+              <td>></td>
+              <td>→</td>
+            </tr>
+            <tr>
+              <td>8</td>
+              <td>=</td>
+              <td>≡</td>
+            </tr>
+            <tr>
+              <td>9</td>
+              <td></td>
+              <td>(</td>
+            </tr>
+            <tr>
+              <td>0</td>
+              <td></td>
+              <td>)</td>
+            </tr>
+          </table>
+        </div>
+        <br />
+        <br />
+        <h3>2. 결과</h3>
+        <ol>
+          <li><p>변수 별 진리치 할당으로 해당하는 데이터만 하이라이트 하여 볼 수 있습니다.</p></li>
+          <li><p>테이블의 필드를 클릭하면 해당 열의 반전된 값을 볼 수 있습니다.</p></li>
+          <li><p>PC버전에서는 테이블 뷰포트를 가로로 늘이거나 줄일 수 있습니다.</p></li>
+        </ol>
+      </div>
+      <div class="manual-content-eng">
+        <h2>Manual</h2>
+        <br />
+        <h3>1. Input</h3>
+        <ol>
+          <li>
+            <p>You can include any characters except '⊤' and'⊥' in the variable name.</p>
+          </li>
+          <li>
+            <p>There is no limit to the number of variables.</p>
+            <p>
+              However,<br />
+              since the number of cases of truth value increases with the power of 2 per variable,<br />the limit of computing power must be considered.
+            </p>
+          </li>
+          <li>
+            <p>All input buttons operate at the last cursor position.</p>
+          </li>
+          <li>
+            <p>All input buttons correspond to numbers and specific special characters.</p>
+            <p>Logical symbols are entered when you enter the corresponding number or special character.</p>
+          </li>
+        </ol>
+
+        <div class="shortcut-table-box">
+          <table class="shortcut-table">
+            <tr>
+              <th>Number</th>
+              <th>Special<br />Character</th>
+              <th>Result</th>
+            </tr>
+            <tr>
+              <td>1</td>
+              <td></td>
+              <td>⊤</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td></td>
+              <td>⊥</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>!</td>
+              <td>~</td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td>&</td>
+              <td>∧</td>
+            </tr>
+            <tr>
+              <td>5</td>
+              <td>|</td>
+              <td>∨</td>
+            </tr>
+            <tr>
+              <td>6</td>
+              <td>^</td>
+              <td>⊻</td>
+            </tr>
+            <tr>
+              <td>7</td>
+              <td>></td>
+              <td>→</td>
+            </tr>
+            <tr>
+              <td>8</td>
+              <td>=</td>
+              <td>≡</td>
+            </tr>
+            <tr>
+              <td>9</td>
+              <td></td>
+              <td>(</td>
+            </tr>
+            <tr>
+              <td>0</td>
+              <td></td>
+              <td>)</td>
+            </tr>
+          </table>
+        </div>
+        <br />
+        <br />
+        <h3>2. Result</h3>
+        <ol>
+          <li>
+            <p>By assigning truth values ​​to each variable, you can highlight specific rows.</p>
+          </li>
+          <li>
+            <p>By clicking on a table field, you can see the inverted values ​​of that column.</p>
+          </li>
+          <li>In the PC version, you can resize the table viewport horizontally.</li>
+        </ol>
+      </div>
+    </div>
+    <div class="filter hidden"></div>
+    <div class="container">
+      <header>
+        <div class="header">
+          <h1>Truth Table Maker</h1>
+        </div>
+      </header>
+      <article>
+        <div class="contents">
+          <div class="main-control-box">
+            <div class="manual-button">?</div>
+            <div class="input-box">
+              <div class="input-text-box-border">
+                <form class="main-input-form">
+                  <input type="text" class="main-input" placeholder="~p∨q" value="" />
+                </form>
+              </div>
+              <div class="message-box">Please input your logic.</div>
+            </div>
+            <div class="clear-button-box">
+              <button class="clear-all-button">Clear All</button>
+              <button class="clear-button">Clear</button>
+            </div>
+            <div class="submit-button-box">
+              <button class="submit-button">Make a truth table</button>
+            </div>
+            <div class="button-box">
+              <div class="variable-button-box">
+                <button class="variable-button">p</button>
+                <button class="variable-button">q</button>
+                <button class="variable-button">r</button>
+                <button class="variable-button">s</button>
+              </div>
+              <button class="symbol-button true-button" data-shortcut="1">
+                <span class="symbol-button-icon">⊤</span>
+                <span class="symbol-button-title">true</span>
+              </button>
+              <button class="symbol-button false-button" data-shortcut="2">
+                <span class="symbol-button-icon">⊥</span>
+                <span class="symbol-button-title">false</span>
+              </button>
+              <button class="symbol-button not-button" data-shortcut="3">
+                <span class="symbol-button-icon">~</span>
+                <span class="symbol-button-title">not</span>
+              </button>
+              <button class="symbol-button and-button" data-shortcut="4">
+                <span class="symbol-button-icon">∧</span>
+                <span class="symbol-button-title">and</span>
+              </button>
+              <button class="symbol-button or-button" data-shortcut="5">
+                <span class="symbol-button-icon">∨</span>
+                <span class="symbol-button-title">or</span>
+              </button>
+              <button class="symbol-button xor-button" data-shortcut="6">
+                <span class="symbol-button-icon">⊻</span>
+                <span class="symbol-button-title">xor</span>
+              </button>
+              <button class="symbol-button if-then-button" data-shortcut="7">
+                <span class="symbol-button-icon">→</span>
+                <span class="symbol-button-title">if-then</span>
+              </button>
+              <button class="symbol-button is-defined-as-button" data-shortcut="8">
+                <span class="symbol-button-icon">≡</span>
+                <span class="symbol-button-title">is-defined-as</span>
+              </button>
+              <button class="symbol-button left-parentheses-button" data-shortcut="9">
+                <span class="symbol-button-icon">(</span>
+                <span class="symbol-button-title">parentheses</span>
+              </button>
+              <button class="symbol-button right-parentheses-button" data-shortcut="0">
+                <span class="symbol-button-icon">)</span>
+                <span class="symbol-button-title">parentheses</span>
+              </button>
+            </div>
+          </div>
+          <section class="result-table-section"></section>
+        </div>
+      </article>
+      <footer>
+        <div class="footer-box">
+          <span>Feedback : pjb6510@naver.com</span>
+        </div>
+      </footer>
+    </div>
+    <script type="module" src="./script/app.js?version=1.12"></script>
+  </body>
+</html>
