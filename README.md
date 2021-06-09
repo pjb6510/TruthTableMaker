@@ -1,5 +1,7 @@
 **자바스크립트 입문 도중 진행했던 토이프로젝트입니다. 코드 컨벤션이 지켜지지 않았고, 부족한 점이 많으니 코드를 보실 때는 감안해주시기 바랍니다.**
 
+https://pjb6510.github.io/truth-table-maker/TruthTableMaker.html
+
 # TruthTableMaker
 
 ![main](./readmeAssets/main.png)
