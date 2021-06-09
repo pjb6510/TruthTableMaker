@@ -1,11 +1,3 @@
-/*
- * 이후 calculateLogic.js 에서
-    * 변수별 True, False 모든 경우 생성,
-    * 모든 경우별 수식 계산,
-    * 결과 배열 return.
-    ex) [{p:True, q:True, r:True, q∨p:True, p∧(q∨p):True, p∧(q∨p)∨r:True}...]
- */
-
 function makeCases(values) {
   let varsExceptedConst = [];
 
