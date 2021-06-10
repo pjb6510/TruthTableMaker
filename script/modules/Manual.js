@@ -43,9 +43,9 @@ function handleButtonMouseleave(event) {
 }
 
 function handleMouseup(event) {
-  const isMoved
-    = Math.abs(this._buttonState.startX - event.clientX) > 5
-    || Math.abs(this._buttonState.startY - event.clientY) > 5;
+  const isMoved =
+    Math.abs(this._buttonState.startX - event.clientX) > 5 ||
+    Math.abs(this._buttonState.startY - event.clientY) > 5;
 
   if (!isMoved) {
     this._$contentBox.classList.toggle("hidden");
@@ -76,7 +76,7 @@ function handleViewportResize(event) {
 }
 
 function handleLanguageSelectClick(event) {
-  const clickedButton = event.target
+  const clickedButton = event.target;
   const isClickedExactly = clickedButton.tagName === "SPAN";
   if (!isClickedExactly) {
     return;
@@ -102,9 +102,15 @@ export default class Manual {
     this._$button = $manualElements.$button;
     this._$contentBox = $manualElements.$contentBox;
     this._$filter = $manualElements.$filter;
-    this._$languageSelectBox = this._$contentBox.querySelector(".manual-language-select-box");
-    this._$contentEnglish = this._$contentBox.querySelector(".manual-content-eng");
-    this._$contentKorean = this._$contentBox.querySelector(".manual-content-kor");
+    this._$languageSelectBox = this._$contentBox.querySelector(
+      ".manual-language-select-box"
+    );
+    this._$contentEnglish = this._$contentBox.querySelector(
+      ".manual-content-eng"
+    );
+    this._$contentKorean = this._$contentBox.querySelector(
+      ".manual-content-kor"
+    );
 
     this._buttonState = {
       isMouseDown: false,
@@ -116,7 +122,10 @@ export default class Manual {
       distanceY: 0,
     };
 
-    this._viewWidth = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
+    this._viewWidth = Math.max(
+      document.documentElement.clientWidth || 0,
+      window.innerWidth || 0
+    );
     this._isMobile = this._viewWidth < 800 ? true : false;
     this._isKorean = false;
 
@@ -136,17 +145,32 @@ export default class Manual {
   }
 
   activateElementsEvent() {
-    this._$button.addEventListener("mousedown", handleButtonMousedown.bind(this));
-    this._$button.addEventListener("mousemove", handleButtonMousemove.bind(this));
-    this._$button.addEventListener("mouseleave", handleButtonMouseleave.bind(this));
+    this._$button.addEventListener(
+      "mousedown",
+      handleButtonMousedown.bind(this)
+    );
+    this._$button.addEventListener(
+      "mousemove",
+      handleButtonMousemove.bind(this)
+    );
+    this._$button.addEventListener(
+      "mouseleave",
+      handleButtonMouseleave.bind(this)
+    );
     document.addEventListener("mouseup", handleMouseup.bind(this));
     this._$filter.addEventListener("click", handleFilterClick.bind(this));
     window.addEventListener("resize", handleViewportResize.bind(this));
-    this._$languageSelectBox.addEventListener("click", handleLanguageSelectClick.bind(this));
+    this._$languageSelectBox.addEventListener(
+      "click",
+      handleLanguageSelectClick.bind(this)
+    );
   }
 
   updateViewSizeAndIsMobile() {
-    this._viewWidth = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
+    this._viewWidth = Math.max(
+      document.documentElement.clientWidth || 0,
+      window.innerWidth || 0
+    );
     this._isMobile = this._viewWidth < 800 ? true : false;
   }
 }

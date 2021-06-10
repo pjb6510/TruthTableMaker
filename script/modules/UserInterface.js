@@ -25,7 +25,8 @@ function handleLogicInput(event) {
 
 function handleSymbolButtonClick(event) {
   const targetClass = event.target.className;
-  const isClickedExactly = targetClass !== "button-box" && targetClass !== "variable-button-box";
+  const isClickedExactly =
+    targetClass !== "button-box" && targetClass !== "variable-button-box";
 
   if (!isClickedExactly) {
     return;
@@ -34,10 +35,17 @@ function handleSymbolButtonClick(event) {
   const cursorLocation = this._cursorLocation;
 
   if (targetClass === "variable-button") {
-    this._$inputTextElement.value = this._$inputTextElement.value.slice(0, cursorLocation) + event.target.textContent + this._$inputTextElement.value.slice(cursorLocation);
+    this._$inputTextElement.value =
+      this._$inputTextElement.value.slice(0, cursorLocation) +
+      event.target.textContent +
+      this._$inputTextElement.value.slice(cursorLocation);
   } else {
-    const isChildClicked = targetClass === "symbol-button-icon" || targetClass === "symbol-button-title";
-    const clickedButtonShortcut = isChildClicked ? event.target.parentElement.dataset.shortcut : event.target.dataset.shortcut;
+    const isChildClicked =
+      targetClass === "symbol-button-icon" ||
+      targetClass === "symbol-button-title";
+    const clickedButtonShortcut = isChildClicked
+      ? event.target.parentElement.dataset.shortcut
+      : event.target.dataset.shortcut;
     this.inputSymbol(clickedButtonShortcut, cursorLocation);
   }
 
@@ -61,7 +69,9 @@ function handleClearButtonClick(event) {
 
     this.setCursorLocation(0);
   } else if (cursorLocation !== 0) {
-    this._$inputTextElement.value = this._$inputTextElement.value.slice(0, cursorLocation - 1) + this._$inputTextElement.value.slice(cursorLocation);
+    this._$inputTextElement.value =
+      this._$inputTextElement.value.slice(0, cursorLocation - 1) +
+      this._$inputTextElement.value.slice(cursorLocation);
     this.setCursorLocation(cursorLocation - 1);
   }
 
@@ -153,12 +163,18 @@ export default class UI {
       distanceY: 0,
     };
 
-    this._viewWidth = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0)
+    this._viewWidth = Math.max(
+      document.documentElement.clientWidth || 0,
+      window.innerWidth || 0
+    );
     this._isMobile = this._viewWidth < 800 ? true : false;
   }
 
   updateViewSizeAndIsMobile() {
-    this._viewWidth = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
+    this._viewWidth = Math.max(
+      document.documentElement.clientWidth || 0,
+      window.innerWidth || 0
+    );
     this._isMobile = this._viewWidth < 800 ? true : false;
   }
 
@@ -168,12 +184,30 @@ export default class UI {
 
   activateElementsEvent() {
     document.addEventListener("keydown", handleKeydown.bind(this));
-    this._$clearButtonBox.addEventListener("click", handleClearButtonClick.bind(this));
-    this._$buttonBox.addEventListener("click", handleSymbolButtonClick.bind(this));
-    this._$inputTextElement.addEventListener("input", handleLogicInput.bind(this));
-    this._$inputTextElement.addEventListener("blur", handleInputTextBlur.bind(this));
-    this._$InputForm.addEventListener("submit", handleMainInputFormSubmit.bind(this));
-    this._$submitButton.addEventListener("click", handleSubmitButtonClick.bind(this));
+    this._$clearButtonBox.addEventListener(
+      "click",
+      handleClearButtonClick.bind(this)
+    );
+    this._$buttonBox.addEventListener(
+      "click",
+      handleSymbolButtonClick.bind(this)
+    );
+    this._$inputTextElement.addEventListener(
+      "input",
+      handleLogicInput.bind(this)
+    );
+    this._$inputTextElement.addEventListener(
+      "blur",
+      handleInputTextBlur.bind(this)
+    );
+    this._$InputForm.addEventListener(
+      "submit",
+      handleMainInputFormSubmit.bind(this)
+    );
+    this._$submitButton.addEventListener(
+      "click",
+      handleSubmitButtonClick.bind(this)
+    );
 
     window.addEventListener("resize", handleViewportResize.bind(this));
   }
@@ -189,11 +223,17 @@ export default class UI {
 
   inputSymbol(shortcut, index) {
     const symbol = this.convertCharToSymbol(shortcut);
-    this._$inputTextElement.value = this._$inputTextElement.value.slice(0, index) + symbol + this._$inputTextElement.value.slice(index);
+    this._$inputTextElement.value =
+      this._$inputTextElement.value.slice(0, index) +
+      symbol +
+      this._$inputTextElement.value.slice(index);
   }
 
   highlightError(result) {
-    if (result.errorStartIndex !== undefined && result.errorEndIndex !== undefined) {
+    if (
+      result.errorStartIndex !== undefined &&
+      result.errorEndIndex !== undefined
+    ) {
       this._$inputTextElement.focus();
       this._$inputTextElement.selectionStart = result.errorStartIndex;
       this._$inputTextElement.selectionEnd = result.errorEndIndex;

@@ -50,5 +50,5 @@ function makeTruthTable(logicExpression) {
   };
 
   new TruthTable(materials);
-  mainUI.updateMessage("Complete!")
+  mainUI.updateMessage("Complete!");
 }

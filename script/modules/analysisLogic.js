@@ -201,8 +201,14 @@ function objectifyOperator(operatorChar, leftValue, startIndex) {
 }
 
 function saveAndInitVariable(buffer, isLastIndex = false) {
-  const varNameStartIndex = isLastIndex ? buffer.index - buffer.variable.length + buffer.indexStartNum + 1 : buffer.index - buffer.variable.length + buffer.indexStartNum;
-  const variableObj = objectifyVariable(buffer.variable, buffer.notOpCount, varNameStartIndex);
+  const varNameStartIndex = isLastIndex
+    ? buffer.index - buffer.variable.length + buffer.indexStartNum + 1
+    : buffer.index - buffer.variable.length + buffer.indexStartNum;
+  const variableObj = objectifyVariable(
+    buffer.variable,
+    buffer.notOpCount,
+    varNameStartIndex
+  );
   buffer.result.push(variableObj);
   buffer.prevVariable = variableObj;
 
@@ -263,12 +269,19 @@ function divideLogic(logicExpression, indexStartNum) {
       }
 
       const rightBracketIndex = indexOfBracket(logicExpression, i);
-      const expressionInBracket = logicExpression.slice(i + 1, rightBracketIndex);
+      const expressionInBracket = logicExpression.slice(
+        i + 1,
+        rightBracketIndex
+      );
       const recursiveCallResult = divideLogic(expressionInBracket, i + 1);
 
       if (recursiveCallResult) {
         const arrStartIndex = i + indexStartNum;
-        const arrayObj = objectifyArray(recursiveCallResult, buffer.notOpCount, arrStartIndex);
+        const arrayObj = objectifyArray(
+          recursiveCallResult,
+          buffer.notOpCount,
+          arrStartIndex
+        );
         result.push(arrayObj);
         buffer.prevVariable = arrayObj;
 
@@ -292,7 +305,9 @@ function divideLogic(logicExpression, indexStartNum) {
 
       const opStartIndex = i + indexStartNum;
 
-      const opLeftValue = isFirstOperator ? buffer.prevVariable : buffer.prevOperator;
+      const opLeftValue = isFirstOperator
+        ? buffer.prevVariable
+        : buffer.prevOperator;
       isFirstOperator = false;
 
       const operatorObj = objectifyOperator(char, opLeftValue, opStartIndex);
@@ -352,7 +367,9 @@ function verifyLogicSequence(logicList) {
     }
 
     if (currentElement.type === "array") {
-      const recursiveCallResult = verifyLogicSequence(currentElement.contentArray);
+      const recursiveCallResult = verifyLogicSequence(
+        currentElement.contentArray
+      );
 
       if (!recursiveCallResult.result) {
         return recursiveCallResult;
@@ -403,10 +420,15 @@ function getUniqueVariablesNames(variables) {
     const variable = variables[i];
 
     if (variable.type === "array") {
-      const recursiveCallResult = getUniqueVariablesNames(variable.contentArray);
+      const recursiveCallResult = getUniqueVariablesNames(
+        variable.contentArray
+      );
       result = result.concat(recursiveCallResult);
     } else {
-      if (variable.contentExceptedNotOp !== "⊥" && variable.contentExceptedNotOp !== "⊤") {
+      if (
+        variable.contentExceptedNotOp !== "⊥" &&
+        variable.contentExceptedNotOp !== "⊤"
+      ) {
         result.push(variable.contentExceptedNotOp);
       }
     }

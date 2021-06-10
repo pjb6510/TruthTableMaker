@@ -108,8 +108,12 @@ function calcLeftValue(operator, _case) {
 
   if (operator.leftValue.type === "array") {
     leftString = operator.leftValue.content;
-    const recursiveCallResult = calculateCase(operator.leftValue.contentArray, _case);
-    operator.leftResult = recursiveCallResult[operator.leftValue.contentExceptedNotOp];
+    const recursiveCallResult = calculateCase(
+      operator.leftValue.contentArray,
+      _case
+    );
+    operator.leftResult =
+      recursiveCallResult[operator.leftValue.contentExceptedNotOp];
 
     if (operator.leftValue.notOpNumber % 2 === 1) {
       operator.leftResult = !operator.leftResult;
@@ -140,8 +144,12 @@ function calcRightValue(operator, _case) {
 
   if (operator.rightValue.type === "array") {
     rightString = operator.rightValue.content;
-    const recursiveCallResult = calculateCase(operator.rightValue.contentArray, _case);
-    operator.rightResult = recursiveCallResult[operator.rightValue.contentExceptedNotOp];
+    const recursiveCallResult = calculateCase(
+      operator.rightValue.contentArray,
+      _case
+    );
+    operator.rightResult =
+      recursiveCallResult[operator.rightValue.contentExceptedNotOp];
 
     if (operator.rightValue.notOpNumber % 2 === 1) {
       operator.rightResult = !operator.rightResult;
@@ -170,17 +178,21 @@ function calculateCase(logicList, _case) {
     const singleValue = logicList[0];
 
     if (singleValue.type === "array") {
-      const recursiveCallResult = calculateCase(singleValue.contentArray, _case);
+      const recursiveCallResult = calculateCase(
+        singleValue.contentArray,
+        _case
+      );
 
-      result[singleValue.content]
-        = singleValue.notOpNumber % 2 === 1
-        ? !recursiveCallResult[singleValue.contentExceptedNotOp]
-        : recursiveCallResult[singleValue.contentExceptedNotOp];
+      result[singleValue.content] =
+        singleValue.notOpNumber % 2 === 1
+          ? !recursiveCallResult[singleValue.contentExceptedNotOp]
+          : recursiveCallResult[singleValue.contentExceptedNotOp];
 
       return result;
     } else {
       const tempResult = _case[singleValue.contentExceptedNotOp];
-      result[singleValue.content] = singleValue.notOpNumber % 2 === 1 ? !tempResult : tempResult;
+      result[singleValue.content] =
+        singleValue.notOpNumber % 2 === 1 ? !tempResult : tempResult;
 
       return result;
     }
@@ -207,7 +219,10 @@ function calculateCase(logicList, _case) {
       extendObj(result, rightCalcResult.result);
     }
 
-    operator.operationResult = operator.method(operator.leftResult, operator.rightResult);
+    operator.operationResult = operator.method(
+      operator.leftResult,
+      operator.rightResult
+    );
     operator.resultExpression = `${leftString}${operator.content}${rightString}`;
     result[operator.resultExpression] = operator.operationResult;
 

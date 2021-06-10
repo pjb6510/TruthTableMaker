@@ -61,8 +61,6 @@ function updateTableHighlight() {
   const varIndex = this._varIndex;
   const indexHavingNotOp = [];
 
-
-
   let isNoCondition = true;
   for (const variable in varCondition) {
     if (varCondition[variable] === "T" || varCondition[variable] === "F") {
@@ -120,7 +118,7 @@ function updateTableHighlight() {
 
   for (let i = 0; i < indexHavingNotOp.length; i++) {
     const index = indexHavingNotOp[i];
-    const tableHead = tableHeads[index]
+    const tableHead = tableHeads[index];
 
     tableHead.textContent = `~( ${tableHead.textContent} )`;
     tableHead.classList.add("not-operator-added");
@@ -130,7 +128,8 @@ function updateTableHighlight() {
 
 function handleRadiosBoxChange(event) {
   const inputElement = event.target;
-  const isTypeInput = inputElement.tagName === "INPUT" && inputElement.type === "radio";
+  const isTypeInput =
+    inputElement.tagName === "INPUT" && inputElement.type === "radio";
   const isChecked = inputElement.checked;
 
   if (isTypeInput && isChecked) {
